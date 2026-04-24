@@ -17,26 +17,26 @@ export const NEXUS_ENTITIES: Record<string, EntityConfig> = {
         name: 'Hero Section',
         endpoint: 'hero',
         singleton: true,
-        listFields: ['title', 'subtitle'],
+        listFields: ['headline'],
         fields: [
-            { name: 'title', label: 'Title', type: 'text' },
-            { name: 'subtitle', label: 'Subtitle', type: 'textarea' },
-            { name: 'button_text', label: 'Button Text', type: 'text' },
-            { name: 'button_link', label: 'Button Link', type: 'text' },
-            { name: 'background_video', label: 'Background Video', type: 'text' },
+            { name: 'headline', label: 'Headline', type: 'text' },
+            { name: 'typewriter_words', label: 'Typewriter Words (Comma separated)', type: 'textarea' },
+            { name: 'button_1_text', label: 'Button 1 Text', type: 'text' },
+            { name: 'button_1_link', label: 'Button 1 Link', type: 'text' },
+            { name: 'button_2_text', label: 'Button 2 Text', type: 'text' },
+            { name: 'button_2_link', label: 'Button 2 Link', type: 'text' },
         ]
     },
     'settings': {
         name: 'Site Settings',
         endpoint: 'settings',
         singleton: true,
-        listFields: ['site_name'],
+        listFields: ['navbar_logo_text'],
         fields: [
-            { name: 'site_name', label: 'Site Name', type: 'text' },
-            { name: 'contact_email', label: 'Contact Email', type: 'text' },
-            { name: 'contact_phone', label: 'Contact Phone', type: 'text' },
-            { name: 'address', label: 'Address', type: 'textarea' },
-            { name: 'footer_text', label: 'Footer Text', type: 'textarea' },
+            { name: 'navbar_logo_text', label: 'Navbar Logo Text', type: 'text' },
+            { name: 'footer_tagline', label: 'Footer Tagline', type: 'textarea' },
+            { name: 'cta_button_text', label: 'CTA Button Text', type: 'text' },
+            { name: 'cta_button_link', label: 'CTA Button Link', type: 'text' },
         ]
     },
     'email-config': {
@@ -50,7 +50,6 @@ export const NEXUS_ENTITIES: Record<string, EntityConfig> = {
             { name: 'smtp_user', label: 'SMTP User', type: 'text' },
             { name: 'smtp_password', label: 'SMTP Password', type: 'text' },
             { name: 'use_tls', label: 'Use TLS', type: 'boolean' },
-            { name: 'default_from_email', label: 'Default From Email', type: 'text' },
             { name: 'inquiry_receivers', label: 'Inquiry Receivers (comma separated)', type: 'textarea' },
         ]
     },
@@ -61,38 +60,37 @@ export const NEXUS_ENTITIES: Record<string, EntityConfig> = {
         fields: [
             { name: 'title', label: 'Title', type: 'text' },
             { name: 'slug', label: 'Slug', type: 'text' },
-            { name: 'content', label: 'Content (Markdown)', type: 'textarea' },
+            { name: 'content', label: 'Content (HTML/Markdown)', type: 'textarea' },
         ]
     },
     'blogs': {
         name: 'Blog Posts',
         endpoint: 'blogs',
-        listFields: ['title', 'category', 'created_at'],
+        listFields: ['title', 'category', 'date'],
         fields: [
             { name: 'title', label: 'Title', type: 'text' },
-            { name: 'slug', label: 'Slug', type: 'text' },
-            { name: 'summary', label: 'Summary', type: 'textarea' },
-            { name: 'content', label: 'Content (Markdown)', type: 'textarea' },
+            { name: 'slug', label: 'Slug (leave blank to auto-generate)', type: 'text' },
             { name: 'category', label: 'Category', type: 'text' },
-            { name: 'author', label: 'Author', type: 'text' },
-            { name: 'featured_image', label: 'Featured Image', type: 'image' },
+            { name: 'read_time', label: 'Read Time (e.g. 5 min read)', type: 'text' },
+            { name: 'summary', label: 'Summary', type: 'textarea' },
+            { name: 'content', label: 'Content (HTML)', type: 'textarea' },
+            { name: 'image', label: 'Featured Image', type: 'image' },
+            { name: 'author_name', label: 'Author Name', type: 'text' },
+            { name: 'author_role', label: 'Author Role', type: 'text' },
+            { name: 'author_avatar', label: 'Author Avatar', type: 'image' },
         ]
     },
     'projects': {
         name: 'Projects',
         endpoint: 'projects',
-        listFields: ['title', 'client', 'category'],
+        listFields: ['title', 'category', 'result_metric'],
         fields: [
             { name: 'title', label: 'Title', type: 'text' },
-            { name: 'slug', label: 'Slug', type: 'text' },
-            { name: 'client', label: 'Client', type: 'text' },
-            { name: 'description', label: 'Description', type: 'textarea' },
-            { name: 'challenge', label: 'Challenge', type: 'textarea' },
-            { name: 'solution', label: 'Solution', type: 'textarea' },
+            { name: 'slug', label: 'Slug (leave blank to auto-generate)', type: 'text' },
             { name: 'category', label: 'Category', type: 'text' },
-            { name: 'live_url', label: 'Live URL', type: 'text' },
-            { name: 'github_url', label: 'Github URL', type: 'text' },
-            { name: 'featured_image', label: 'Featured Image', type: 'image' },
+            { name: 'result_metric', label: 'Result Metric', type: 'text' },
+            { name: 'content', label: 'Content (HTML)', type: 'textarea' },
+            { name: 'image', label: 'Project Image', type: 'image' },
         ]
     },
     'services': {
@@ -108,11 +106,10 @@ export const NEXUS_ENTITIES: Record<string, EntityConfig> = {
     'tech-stack': {
         name: 'Tech Stack',
         endpoint: 'tech-stack',
-        listFields: ['name', 'category'],
+        listFields: ['name'],
         fields: [
             { name: 'name', label: 'Name', type: 'text' },
-            { name: 'category', label: 'Category', type: 'text' },
-            { name: 'icon_url', label: 'Icon URL', type: 'text' },
+            { name: 'logo_svg', label: 'Logo SVG/URL', type: 'textarea' },
         ]
     },
     'testimonials': {
@@ -121,10 +118,10 @@ export const NEXUS_ENTITIES: Record<string, EntityConfig> = {
         listFields: ['client_name', 'company'],
         fields: [
             { name: 'client_name', label: 'Client Name', type: 'text' },
+            { name: 'role', label: 'Role', type: 'text' },
             { name: 'company', label: 'Company', type: 'text' },
-            { name: 'content', label: 'Content', type: 'textarea' },
-            { name: 'avatar', label: 'Avatar', type: 'image' },
-            { name: 'rating', label: 'Rating (1-5)', type: 'number' },
+            { name: 'quote', label: 'Quote', type: 'textarea' },
+            { name: 'logo', label: 'Company Logo / Avatar', type: 'image' },
         ]
     },
     'stats': {
@@ -134,18 +131,15 @@ export const NEXUS_ENTITIES: Record<string, EntityConfig> = {
         fields: [
             { name: 'label', label: 'Label', type: 'text' },
             { name: 'value', label: 'Value', type: 'text' },
-            { name: 'suffix', label: 'Suffix', type: 'text' },
-            { name: 'icon', label: 'Icon', type: 'text' },
         ]
     },
     'socials': {
         name: 'Social Links',
         endpoint: 'socials',
-        listFields: ['platform', 'url'],
+        listFields: ['name', 'url'],
         fields: [
-            { name: 'platform', label: 'Platform', type: 'text' },
+            { name: 'name', label: 'Platform Name', type: 'text' },
             { name: 'url', label: 'URL', type: 'text' },
-            { name: 'icon', label: 'Icon (Lucide name)', type: 'text' },
         ]
     },
     'comments': {
@@ -154,33 +148,30 @@ export const NEXUS_ENTITIES: Record<string, EntityConfig> = {
         listFields: ['name', 'post', 'created_at'],
         fields: [
             { name: 'name', label: 'Name', type: 'text' },
-            { name: 'content', label: 'Content', type: 'textarea' },
+            { name: 'text', label: 'Content', type: 'textarea' },
             { name: 'post', label: 'Post ID', type: 'number' },
         ]
     },
     'join': {
         name: 'Job Applications',
         endpoint: 'join',
-        listFields: ['name', 'email', 'role', 'created_at'],
+        listFields: ['name', 'email', 'submitted_at'],
         fields: [
             { name: 'name', label: 'Name', type: 'text' },
             { name: 'email', label: 'Email', type: 'text' },
-            { name: 'role', label: 'Role', type: 'text' },
-            { name: 'portfolio_url', label: 'Portfolio URL', type: 'text' },
-            { name: 'cover_letter', label: 'Cover Letter', type: 'textarea' },
+            { name: 'phone', label: 'Phone', type: 'text' },
+            { name: 'cv_base64', label: 'CV (Base64)', type: 'textarea' },
+            { name: 'image_base64', label: 'Image (Base64)', type: 'textarea' },
         ]
     },
     'inquiry': {
         name: 'Project Inquiries',
         endpoint: 'inquiry',
-        listFields: ['name', 'email', 'budget', 'created_at'],
+        listFields: ['name', 'email', 'submitted_at'],
         fields: [
             { name: 'name', label: 'Name', type: 'text' },
             { name: 'email', label: 'Email', type: 'text' },
-            { name: 'company', label: 'Company', type: 'text' },
-            { name: 'project_type', label: 'Project Type', type: 'text' },
-            { name: 'budget', label: 'Budget', type: 'text' },
-            { name: 'details', label: 'Details', type: 'textarea' },
+            { name: 'phone', label: 'Phone', type: 'text' },
         ]
     },
     'newsletter': {
